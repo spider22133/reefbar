@@ -1,0 +1,44 @@
+version: '3'
+
+services:
+  wp-database:
+    image: mariadb
+    container_name: mariadb
+    restart: always
+    environment:
+     MYSQL_ROOT_PASSWORD: qwerty
+     MYSQL_DATABASE: wordpress
+     MYSQL_USER: wordpress
+     MYSQL_PASSWORD: wordpress
+
+  phpmyadmin:
+      image: phpmyadmin/phpmyadmin
+      container_name: phpmyadmin
+      links:
+        - wp-database:db
+      environment:
+        MYSQL_ROOT_PASSWORD: qwerty
+      restart: always
+      ports:
+        - 8181:80
+      depends_on:
+        - wp-database
+
+  wp-backend:
+    image: wordpress
+    container_name: wordpress
+    restart: always
+    links:
+        - wp-database:db
+    environment:
+      WORDPRESS_DB_HOST: db:3306
+      WORDPRESS_DB_USER: wordpress
+      WORDPRESS_DB_PASSWORD: wordpress
+    volumes:
+      - ~/Documents/PhpStormProjects/react-wp.loc/api:/var/www/html
+    ports:
+      - 8180:80
+    depends_on:
+      - wp-database
+
+
