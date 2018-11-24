@@ -19,6 +19,8 @@ const mapDispatchToProps = (dispatch) => ({
 
 class App extends Component {
 
+	// Hello World
+
 	constructor(props) {
 		super(props);
 
