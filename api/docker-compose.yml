@@ -35,6 +35,7 @@ services:
       WORDPRESS_DB_USER: wordpress
       WORDPRESS_DB_PASSWORD: wordpress
     volumes:
+      - ~/Documents/PhpStormProjects/react-wp.loc/api/code:/code
       - ~/Documents/PhpStormProjects/react-wp.loc/api:/var/www/html
     ports:
       - 8180:80
