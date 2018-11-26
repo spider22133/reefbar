@@ -4,9 +4,18 @@
 add_action( 'after_setup_theme', 'react_wp_rest_setup' );
 function react_wp_rest_setup() {
 	register_nav_menus(
-		array( 'main-menu' => __( 'Main Menu', 'react_wp_rest' ) )
+		array(
+			'main_menu' => __( 'Main Menu', 'react_wp_rest' ),
+			'short' => __( 'Short', 'react_wp_rest' )
+		)
 	);
+	add_theme_support( 'title-tag' );
+
+	// Set up the WordPress Theme logo feature.
+	add_theme_support( 'custom-logo' );
 }
+
+
 
 // Enable upload of VCF, SVG
 function custom_mime_types($mime_types){

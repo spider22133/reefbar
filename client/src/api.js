@@ -1,9 +1,9 @@
 import superagentPromise from 'superagent-promise';
 import _superagent from 'superagent';
 
-const superagent = superagentPromise(_superagent, global.Promise);
 
 const API_ROOT = process.env.REACT_APP_API_URL;
+const superagent = superagentPromise(_superagent, global.Promise);
 
 const responseBody = res => res.body;
 
@@ -28,7 +28,7 @@ const Content = {
 		requests.getWithCredentials(`/wp-json/react-wp-rest/preview?type=${type}&slug=${slug}&_wpnonce=${wpnonce}&_embed`),
 	pageList: () =>
 		requests.get('/wp-json/react-wp-rest/pages/list')
-} 
+}
 
 export default {
 	Menus,

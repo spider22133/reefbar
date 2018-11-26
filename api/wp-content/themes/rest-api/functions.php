@@ -7,7 +7,8 @@ require_once('inc/utilities.php');
 require_once('inc/cors.php');
 
 // Register menu endpoints
-require_once('inc/menus.php');
+require_once('theme-endpoints.php');
+
 
 // Register endpoints to provide client routes
 require_once('inc/routes.php');
@@ -17,5 +18,9 @@ require_once('inc/custom-post-types.php');
 
 // Theme setup
 require_once('inc/theme-setup.php');
+
+
+$Theme_Endpoints = new Theme_Endpoints();
+$Theme_Endpoints->init();
 
 ?>

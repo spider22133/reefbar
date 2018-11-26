@@ -46,6 +46,7 @@ export default (state = defaultState, action) => {
 					...state.lists,
 					pages: action.payload
 				}
+
 			};
 
 		case 'LOAD_MENU':

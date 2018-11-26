@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
+import {bindActionCreators} from 'redux'
 import { Link } from 'react-router-dom';
+import {fetchMenu} from '../../../actions';
 
 import api from '../../../api';
 
@@ -11,7 +13,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-	loadMenu: (menu) => dispatch({ type: 'LOAD_MENU', payload: menu })
+	loadMenu: (menu) => dispatch({ type: 'LOAD_MENU', payload: menu }),
+	actions: bindActionCreators({fetchMenu}, dispatch)
 });
 
 class Header extends Component {
@@ -21,6 +24,10 @@ class Header extends Component {
 		this.props.loadMenu(api.Menus.bySlug('main'));
 		this.buildMenu = this.buildMenu.bind(this);
 	}
+
+    componentDidMount() {
+        this.props.actions.fetchMenu('short');
+    }
 
 	buildMenu() {
 		if (this.props.mainMenu) {
@@ -35,6 +42,7 @@ class Header extends Component {
 	}
 
 	render() {
+		// console.log(this.props.mainMenu);
 		return (
 			<header className="header-main">
 				<nav>
